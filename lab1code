@@ -1,0 +1,194 @@
+#include <stdio.h>
+
+int main()
+{
+    int n[20] = {1, 3, 4, 6, 7, 8, 10, 43, 11};
+    int size = 9;
+    int i, target, position, element;
+    int max, min;
+
+    /* Q1) Traverse Array */
+
+    printf("Array elements are: ");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", n[i]);
+    }
+
+
+    /* Q2) Linear Search */
+
+    printf("\n\nEnter element to search: ");
+    scanf("%d", &target);
+
+    for(i = 0; i < size; i++)
+    {
+        if(n[i] == target)
+        {
+            printf("Found at position %d", i + 1);
+            break;
+        }
+    }
+
+    if(i == size)
+    {
+        printf("Element not found");
+    }
+
+
+    /* Q3) Maximum Element */
+
+    max = n[0];
+
+    for(i = 1; i < size; i++)
+    {
+        if(n[i] > max)
+        {
+            max = n[i];
+        }
+    }
+
+    printf("\n\nMaximum element is: %d", max);
+
+
+    /* Q4) Minimum Element */
+
+    min = n[0];
+
+    for(i = 1; i < size; i++)
+    {
+        if(n[i] < min)
+        {
+            min = n[i];
+        }
+    }
+
+    printf("\nMinimum element is: %d", min);
+
+
+    /* Q5) Insertion at Beginning */
+
+    printf("\n\nEnter element to insert at beginning: ");
+    scanf("%d", &element);
+
+    for(i = size; i > 0; i--)
+    {
+        n[i] = n[i - 1];
+    }
+
+    n[0] = element;
+    size++;
+
+    printf("After insertion at beginning: ");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", n[i]);
+    }
+
+
+    /* Q6) Insertion at Given Position */
+
+    printf("\n\nEnter element to insert: ");
+    scanf("%d", &element);
+
+    printf("Enter position: ");
+    scanf("%d", &position);
+
+    if(position >= 1 && position <= size + 1)
+    {
+        for(i = size; i >= position; i--)
+        {
+            n[i] = n[i - 1];
+        }
+
+        n[position - 1] = element;
+        size++;
+
+        printf("After insertion at position %d: ", position);
+
+        for(i = 0; i < size; i++)
+        {
+            printf("%d ", n[i]);
+        }
+    }
+    else
+    {
+        printf("Invalid position");
+    }
+
+
+    /* Q7) Insertion at End */
+
+    printf("\n\nEnter element to insert at end: ");
+    scanf("%d", &element);
+
+    n[size] = element;
+    size++;
+
+    printf("After insertion at end: ");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", n[i]);
+    }
+
+
+    /* Q8) Deletion at Beginning */
+
+    for(i = 0; i < size - 1; i++)
+    {
+        n[i] = n[i + 1];
+    }
+
+    size--;
+
+    printf("\n\nAfter deletion at beginning: ");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", n[i]);
+    }
+
+
+    /* Q9) Deletion at Given Position */
+
+    printf("\n\nEnter position to delete: ");
+    scanf("%d", &position);
+
+    if(position >= 1 && position <= size)
+    {
+        for(i = position - 1; i < size - 1; i++)
+        {
+            n[i] = n[i + 1];
+        }
+
+        size--;
+
+        printf("After deletion at position %d: ", position);
+
+        for(i = 0; i < size; i++)
+        {
+            printf("%d ", n[i]);
+        }
+    }
+    else
+    {
+        printf("Invalid position");
+    }
+
+
+    /* Q10) Deletion at End */
+
+    size--;
+
+    printf("\n\nAfter deletion at end: ");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d ", n[i]);
+    }
+
+    return 0;
+}
